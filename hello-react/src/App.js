@@ -1,11 +1,11 @@
 // eslint-disable-next-line
 import React from 'react';
-import MyComponent from './MyComponent';
-import Counter from './Counter';
-import Say from './Say';
-
+// import MyComponent from './MyComponent';
+// import Counter from './Counter';
+// import Say from './Say';
+import EventPractice from './EventPractice';
 function App() {
-  const name = '리액트';
+  // const name = '리액트';
   // const style = {
   //   backgroundColor: 'black',
   //   color: 'aqua',
@@ -23,7 +23,8 @@ function App() {
   // );
  
   //return <Counter/>
-  return <Say/>
+  // return <Say/>
+  return <EventPractice/>
 }
 
 export default App;
