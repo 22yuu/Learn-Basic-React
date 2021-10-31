@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import SassComponent from './SassComponent'
+import React from 'react';
+import styled from 'styled-components';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <SassComponent/>
-      </div>
-    )
-  }
+const Circle = styled.div`
+  width: 5rem;
+  height: 5rem;
+  background: black;
+  border-radius: 50%;
+`;
+
+function App() {
+  return <Circle />;
 }
 
 export default App;
