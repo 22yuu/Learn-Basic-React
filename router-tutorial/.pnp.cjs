@@ -39,6 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/react", "virtual:a642b7e44eda7b69eb5bb5f6af05d08d4eea6f3e31d8be12281755e928ddc6fa6cce8b801ada2a180b9544726afb64329239425dbaa4da855eef19831188009d#npm:11.2.7"],
             ["@testing-library/user-event", "virtual:a642b7e44eda7b69eb5bb5f6af05d08d4eea6f3e31d8be12281755e928ddc6fa6cce8b801ada2a180b9544726afb64329239425dbaa4da855eef19831188009d#npm:12.8.3"],
             ["eslint-config-react-app", "virtual:a642b7e44eda7b69eb5bb5f6af05d08d4eea6f3e31d8be12281755e928ddc6fa6cce8b801ada2a180b9544726afb64329239425dbaa4da855eef19831188009d#npm:6.0.0"],
+            ["qs", "npm:6.10.1"],
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:a642b7e44eda7b69eb5bb5f6af05d08d4eea6f3e31d8be12281755e928ddc6fa6cce8b801ada2a180b9544726afb64329239425dbaa4da855eef19831188009d#npm:17.0.2"],
             ["react-router-dom", "virtual:a642b7e44eda7b69eb5bb5f6af05d08d4eea6f3e31d8be12281755e928ddc6fa6cce8b801ada2a180b9544726afb64329239425dbaa4da855eef19831188009d#npm:5.3.0"],
@@ -16180,6 +16181,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["qs", [
+        ["npm:6.10.1", {
+          "packageLocation": "./.yarn/cache/qs-npm-6.10.1-12d3ab7795-00e390dbf9.zip/node_modules/qs/",
+          "packageDependencies": [
+            ["qs", "npm:6.10.1"],
+            ["side-channel", "npm:1.0.4"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:6.5.2", {
           "packageLocation": "./.yarn/cache/qs-npm-6.5.2-dbf9d8386b-24af7b9928.zip/node_modules/qs/",
           "packageDependencies": [
@@ -17237,6 +17246,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/react", "virtual:a642b7e44eda7b69eb5bb5f6af05d08d4eea6f3e31d8be12281755e928ddc6fa6cce8b801ada2a180b9544726afb64329239425dbaa4da855eef19831188009d#npm:11.2.7"],
             ["@testing-library/user-event", "virtual:a642b7e44eda7b69eb5bb5f6af05d08d4eea6f3e31d8be12281755e928ddc6fa6cce8b801ada2a180b9544726afb64329239425dbaa4da855eef19831188009d#npm:12.8.3"],
             ["eslint-config-react-app", "virtual:a642b7e44eda7b69eb5bb5f6af05d08d4eea6f3e31d8be12281755e928ddc6fa6cce8b801ada2a180b9544726afb64329239425dbaa4da855eef19831188009d#npm:6.0.0"],
+            ["qs", "npm:6.10.1"],
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:a642b7e44eda7b69eb5bb5f6af05d08d4eea6f3e31d8be12281755e928ddc6fa6cce8b801ada2a180b9544726afb64329239425dbaa4da855eef19831188009d#npm:17.0.2"],
             ["react-router-dom", "virtual:a642b7e44eda7b69eb5bb5f6af05d08d4eea6f3e31d8be12281755e928ddc6fa6cce8b801ada2a180b9544726afb64329239425dbaa4da855eef19831188009d#npm:5.3.0"],
