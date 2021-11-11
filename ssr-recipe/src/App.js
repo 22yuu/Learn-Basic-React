@@ -8,9 +8,9 @@ function App() {
   return (
     <div>
       <Menu />
-      <hr/>
-      <Route path="/red" component={RedPage}/>
-      <Route path="/blue" component={BluePage}/>
+      <hr />
+      <Route path="/red" component={RedPage} />
+      <Route path="/blue" component={BluePage} />
     </div>
   );
 }
