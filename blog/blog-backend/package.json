@@ -2,17 +2,20 @@
   "name": "blog-backend",
   "packageManager": "yarn@3.0.2",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
+    "esm": "^3.2.25",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
-    "koa-router": "^10.1.1"
+    "koa-router": "^10.1.1",
+    "mongoose": "^6.0.12"
   },
   "devDependencies": {
     "eslint": "^8.2.0",
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "start": "node src",
-    "start:dev": "nodemon --watch src/ src/index.js"
+    "start": "node -r esm src",
+    "start:dev": "nodemon --watch src/ 0r esm src/index.js"
   }
 }
