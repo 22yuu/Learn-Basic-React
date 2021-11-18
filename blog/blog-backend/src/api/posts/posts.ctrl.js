@@ -4,13 +4,24 @@ import Joi from 'joi'; // Request body 객체 검증 라이브러리
 
 const { ObjectId } = mongoose.Types;
 
-export const checkObjectId = (ctx, next) => {
+export const getPostById = async (ctx, next) => {
     const { id } = ctx.params;
     if(!ObjectId.isValid(id)) {
         ctx.status = 400; // Bad Request
         return;
     }
-    return next();
+    try {
+        const post = await Post.findById(id);
+        // 포스트가 존재하지 않을 때
+        if(!post) {
+            ctx.status = 404;
+            return;
+        }
+        ctx.state.post = post;
+        return next();
+    } catch(e) {
+        ctx.throw(500, e);
+    }
 };
 /*
     POST /api/posts
@@ -43,6 +54,7 @@ export const write = async ctx => {
         title,
         body,
         tags,
+        user: ctx.state.user,
     });
     try {
         await post.save();
@@ -53,7 +65,7 @@ export const write = async ctx => {
 };
 
 /*
-    GET /api/posts
+    GET /api/posts?username=&tag=&page=
 */
 export const list = async ctx => {
     // query는 문자열이기 때문에 숫자로 변환해 주어야 합니다.
@@ -64,15 +76,20 @@ export const list = async ctx => {
         ctx.status = 400;
         return;
     }
-
+    const {tag, username} = ctx.query;
+    // tag, username 값으로 유효하면 객체 안에 넣고, 그렇지 않으면 넣지 않음
+    const query = {
+        ...(username ? { 'user.username': username} : {}),
+        ...(tag? { tags : tag} : {}),
+    }
     try {
-        const posts = await Post.find()
+        const posts = await Post.find(query)
         .sort({_id: -1}) // 정렬 1 : 오름차순, -1: 내림차순
         .limit(10) // 페이지 내 보여지는 게시글 개수
         .skip((page - 1) * 10)
         .lean() // lean() 메서드를 사용하지 않을 경우 밑에 ctx.body = posts ... 주석처리 되어 있는 부분으로 처리해야 함
         .exec();
-        const postCount = await Post.countDocuments().exec();
+        const postCount = await Post.countDocuments(query).exec();
         ctx.set('Last-Page', Math.ceil(postCount / 10));
         // ctx.body = posts
         // .map(post => post.toJSON())
@@ -96,18 +113,19 @@ export const list = async ctx => {
 /*
     GET /api/posts/:id
 */
-export const read = async ctx => {
-    const { id } = ctx.params;
-    try {
-        const post = await Post.findById(id).exec();
-        if(!post) {
-            ctx.status = 404; // Not Found
-            return;
-        }
-        ctx.body = post;
-    } catch(e) {
-        ctx.throw(500, e);
-    }
+export const read = ctx => {
+    // const { id } = ctx.params;
+    // try {
+    //     const post = await Post.findById(id).exec();
+    //     if(!post) {
+    //         ctx.status = 404; // Not Found
+    //         return;
+    //     }
+    //     ctx.body = post;
+    // } catch(e) {
+    //     ctx.throw(500, e);
+    // }
+    ctx.body = ctx.state.post;
 };
 
 /*
@@ -161,3 +179,13 @@ export const update = async ctx => {
         ctx.throw(500, e);
     }
 };
+
+export const checkOwnPost = (ctx, next) => {
+    const { user, post} = ctx.state;
+    console.log(ctx.state);
+    if( post.user._id.toString() !== user._id) {
+        ctx.status = 403;
+        return;
+    }
+    return next();
+}
